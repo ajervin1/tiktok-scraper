@@ -12,7 +12,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@sequelize/core": "^7.0.0-alpha.40",
+    "@sequelize/sqlite3": "^7.0.0-alpha.40",
     "axios": "^1.6.8",
+    "dotenv": "^16.4.5",
     "inquirer": "^9.2.20",
     "pg": "^8.11.5",
     "pg-hstore": "^2.3.4",
@@ -20,6 +23,7 @@
     "punycode": "^2.3.1",
     "sequelize": "^6.37.3",
     "signtok": "^1.2.0",
+    "sqlite3": "^5.1.7",
     "tikchan": "^1.0.1",
     "tiktok-signature": "^1.9.2",
     "uri-js": "^4.2.2"

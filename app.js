@@ -1,7 +1,7 @@
 import inquirer from 'inquirer';
-import { getTikTokByUserId } from "./tiktokrequests/tiktokapi.js";
-import { getUserInfo } from "./tiktokrequests/tiktokinfo.js";
-import db from "./db/db.js";
+import { getTikTokByUserId } from "./requests/tiktokapi.js";
+import { getUserInfo } from "./requests/tiktokinfo.js";
+import { db } from "./database/connection.js";
 
 async function askUsername( ) {
 	const questions = [
@@ -33,8 +33,6 @@ async function main(  ) {
 		console.log(`Done with page ${state.page}`)
 	}
 	await db.close()
-
 	console.log("Done Downloading Data")
-
 }
 main()
