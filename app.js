@@ -16,7 +16,7 @@ async function askUsername( ) {
 }
 async function main(  ) {
 	const username = await askUsername();
-	console.log(username)
+
 	const { userId } = await getUserInfo(username)
 	let state = {
 		cursor: 0,
@@ -35,4 +35,3 @@ async function main(  ) {
 	await db.close()
 	console.log("Done Downloading Data")
 }
-main()

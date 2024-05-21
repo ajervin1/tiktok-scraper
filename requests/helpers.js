@@ -37,6 +37,6 @@ export async function tiktokRequest( { userAgent, xTtParams, signed_url } ) {
 }
 export async function getVideoDownloadUrl( uniqueId, videoId ) {
 	const video = await TikChan.download(`https://www.tiktok.com/@${uniqueId}/video/${videoId}`);
-	console.log(video)
+
 	return video.no_wm
 }

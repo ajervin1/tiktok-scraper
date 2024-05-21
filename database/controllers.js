@@ -26,7 +26,7 @@ export async function createTikTok( tiktokId, title, videoUrl, playCount, author
 			createTime
 		}
 	});
-	console.log(tiktok)
+
 }
 function convertUnixTimestamp(timestamp) {
 	// Create a new Date object with the Unix timestamp

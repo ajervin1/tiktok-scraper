@@ -10,7 +10,8 @@ const __dirname = path.dirname(__filename);
 
 export const db = new Sequelize(  {
   dialect: 'sqlite',
-  host: path.resolve(__dirname, 'tiktoks.sqlite')
+  host: path.resolve(__dirname, 'tiktoks.sqlite'),
+  logging: false,
 });
 
 // Export the connection

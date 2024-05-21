@@ -51,6 +51,7 @@ const TikTok = db.define('TikToks',
 );
 
 async function createTable() {
+
 	const res = await TikTok.sync({});
 }
 

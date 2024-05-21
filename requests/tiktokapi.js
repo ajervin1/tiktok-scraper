@@ -8,7 +8,7 @@ import { addItemListToDatabase } from "../database/controllers.js";
 // Stable msToken that seems to work consistently
 const msToken = "YkuQ8qGabOtryQ7k8cFpR9supZ_XCgRM2oY0mwT3xBs73yQ8vj74DPmFtX1eF83f-Zq9tTZtG0CvBeiHmjonGRVjYn5zBEQME21ytbSDbgRXpbl5LONHaysuwms9FBYwks3JTeeluaic"
 /* Control Count Here */
-const COUNT = 30
+const COUNT = 2
 // Adds Tiktoks associated with the userId to the Database and returns the next cursor and a boolean value to tell if to continue paginating
 export async function getTikTokByUserId(userId = "MS4wLjABAAAAQ09e6Ck9CQrQQYAPLehEKMlvVS8XzmGcbNHTGXsXIZSIj7Pe21eYtDq0nzKy6-5V", cursor = 0) {
 	// This the final URL you make a request to for the API call, it is ALWAYS this, do not mistaken it for the signed URL
@@ -35,11 +35,21 @@ export async function getTikTokByUserId(userId = "MS4wLjABAAAAQ09e6Ck9CQrQQYAPLe
 	// Scrape TikTok Data
 	const res = await tiktokRequest({ userAgent, xTtParams, signed_url });
 	const { data } = res;
-	await addItemListToDatabase(data.itemList)
+
+	const newTiktoks = cleanTikToks(data.itemList)
+	console.log(newTiktoks)
+	// await addItemListToDatabase(data.itemList)
 	return {newCursor: data.cursor, hasMore: data.hasMore}
 }
 
+function cleanTikToks( itemList ) {
+	return itemList.map(item => {
+		let {id, author, createTime, desc, music, stats, video} = item;
+		return {id, author, createTime, desc, music, stats,video}
+	})
+}
 
 
+getTikTokByUserId()
 
 
