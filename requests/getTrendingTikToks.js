@@ -1,7 +1,7 @@
 // Get Trending TikToks
 import querystring from "querystring";
 import { signRequest, tiktokRequest } from "./helpers.js";
-import { addItemListToDatabase } from "../database/models.js";
+import { addItemListToDatabase } from "../database/mode";
 
 export async function getTrendingTikToks() {
 	// This the final URL you make a request to for the API call, it is ALWAYS this, do not mistaken it for the signed URL
@@ -30,4 +30,3 @@ export async function getTrendingTikToks() {
 	console.log(data)
 	// await addItemListToDatabase(data.itemList)
 }
-getTrendingTikToks()

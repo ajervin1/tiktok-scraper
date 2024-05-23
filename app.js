@@ -1,14 +1,14 @@
 import inquirer from 'inquirer';
-import { getTikTokByUserId } from "./requests/tiktokapi.js";
-import { getUserInfo } from "./requests/tiktokinfo.js";
-import { db } from "./database/connection.js";
+import { getUserTikToks } from "./requests/getUserTikToks.js";
+import { getUserInfo } from "./requests/getTikTokInfo.js";
+import { db } from "./database/db.js";
 
 async function askUsername( ) {
 	const questions = [
 		{
 			type: 'input',
 			name: 'username',
-			message: "Give tiktok username you would like to scrape: ",
+			message: "Enter tiktok account you want to scrape:",
 		},
 	];
 	const {username} = await inquirer.prompt(questions)
@@ -24,9 +24,8 @@ async function main(  ) {
 		page: 1
 	}
 
-	console.log("Start Scraper")
 	while (state.hasMore === true  ){
-		const {hasMore, newCursor} = await getTikTokByUserId(userId, state.cursor);
+		const {hasMore, newCursor} = await getUserTikToks(userId, state.cursor);
 		state.cursor = newCursor;
 		state.hasMore = hasMore
 		state.page += 1
@@ -35,3 +34,5 @@ async function main(  ) {
 	await db.close()
 	console.log("Done Downloading Data")
 }
+
+main()

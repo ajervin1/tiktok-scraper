@@ -150,7 +150,4 @@ const tiktok = {
 		"id": "7363054306137935150",
 	}
 }
-// Write a mongoose model for this tiktok object
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 

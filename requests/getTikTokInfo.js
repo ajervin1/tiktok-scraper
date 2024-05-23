@@ -2,9 +2,15 @@
 // Get User Info, needed to get a users SECUID
 import querystring from "querystring";
 import { getVideoDownloadUrl, signRequest, tiktokRequest, signTokRequest } from "./helpers.js";
+
 const msToken = "YkuQ8qGabOtryQ7k8cFpR9supZ_XCgRM2oY0mwT3xBs73yQ8vj74DPmFtX1eF83f-Zq9tTZtG0CvBeiHmjonGRVjYn5zBEQME21ytbSDbgRXpbl5LONHaysuwms9FBYwks3JTeeluaic"
 
-export async function getUserInfo(username = 'avajustin')  {
+/**
+ * Get use info of a user
+ * @param username - username of the tiktok user you want to get info from
+ *
+ */
+export async function getUserInfo( username = 'avajustin' ) {
 	// This the final URL you make a request to for the API call, it is ALWAYS this, do not mistaken it for the signed URL
 	// Parameters
 	const TT_REQ_PERM_URL =
@@ -30,14 +36,19 @@ export async function getUserInfo(username = 'avajustin')  {
 	const { user_agent: userAgent } = navigator;
 	// Scrape TikTok Data
 	const res = await tiktokRequest({ userAgent, xTtParams, signed_url });
-	const { userInfo} = res.data;
-	const {stats, user} = userInfo
-	const userObject = {stats, user, userId: user.secUid}
+	const { userInfo } = res.data;
+	const { stats, user } = userInfo
+	const userObject = { stats, user, userId: user.secUid }
 	return userObject
 }
 
+/**
+ * Get video infor
+ * @param videoId - videoId info of the video info you want
+ *
+ */
 // Get Video information along with video url to download
-async function getVideoInfo(videoId = "7059427087198719238") {
+async function getVideoInfo( videoId = "7059427087198719238" ) {
 	// This the final URL you make a request to for the API call, it is ALWAYS this, do not mistaken it for the signed URL
 	// Parameters
 	const TT_REQ_PERM_URL =
